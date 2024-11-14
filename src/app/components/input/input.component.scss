@@ -18,15 +18,21 @@ input[type='text'] {
 		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 		outline: none;
 	}
+
+	&::placeholder {
+		color: #999;
+		font-style: italic;
+	}
 }
 
-input[type='text']::placeholder {
-	color: #999;
-	font-style: italic;
-}
-
-input[type='text']:disabled {
-	background-color: var(--secondary-color);
-	border-color: #ddd;
-	cursor: not-allowed;
+@media (prefers-color-scheme: dark) {
+	input[type='text'] {
+		border-color: rgb(62, 68, 70);
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px inset;
+		background: black;
+		&:focus-within {
+			border-color: var(--main-color);
+			box-shadow: 0 0 5px rgba(103, 10, 124, 0.5);
+		}
+	}
 }
