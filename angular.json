@@ -58,6 +58,10 @@
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
+						},
+						"gh-pages": {
+							"baseHref": "/ng-todo/",
+							"outputPath": "dist"
 						}
 					},
 					"defaultConfiguration": "production"
