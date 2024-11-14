@@ -1,0 +1,19 @@
+li {
+	padding: 10px 20px;
+	border-bottom: 1px solid var(--main-color);
+}
+
+label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: large;
+	cursor: pointer;
+	width: clamp(100px, 60vw, 400px);
+}
+
+.completed {
+	text-decoration: line-through;
+	color: var(--text-main-color);
+	color: color-mix(in hsl, var(--text-main-color), black 20%);
+}
