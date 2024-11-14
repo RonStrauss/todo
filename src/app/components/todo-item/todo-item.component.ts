@@ -9,6 +9,9 @@ import { TodosService } from 'src/app/services/todos.service';
 	styleUrls: ['./todo-item.component.scss'],
 	standalone: true,
 	imports: [NgClass],
+	host: {
+		role: 'listitem',
+	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.ShadowDom,
 })
@@ -31,7 +34,7 @@ export class TodoItemComponent implements OnInit {
 		this._todo.toggleTodoById(this.todo.id);
 	}
 
-	remove(){
+	remove() {
 		this._todo.removeTodoById(this.todo.id);
 	}
 }

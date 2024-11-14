@@ -1,7 +1,5 @@
-<li>
-	<label [for]="todo.id">
-		<input type="checkbox" [checked]="todo.completed" (change)="toggle()" [id]="todo.id" />
-		<span [ngClass]="{ completed: todo.completed }" aria-label="A Todo Item">{{ todo.title }}</span>
-		<button (click)="remove()">x</button>
-	</label>
-</li>
+<label [for]="todo.id">
+	<input type="checkbox" name="completed" [checked]="todo.completed" [attr.aria-labelledby]="todo.id + '-title'" [attr.aria-checked]="todo.completed" (change)="toggle()" [id]="todo.id" />
+	<span [ngClass]="{ completed: todo.completed }" role="presentation" [id]="todo.id + '-title'" [attr.aria-label]="todo.completed ? 'Completed' : '' + 'Task Item'">{{ todo.title }}</span>
+	<button (click)="remove()" [attr.aria-label]="'Delete ' + todo.title + ' from the list'">Delete</button>
+</label>
