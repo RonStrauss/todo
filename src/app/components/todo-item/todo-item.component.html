@@ -1,7 +1,0 @@
-<li>
-	<label [for]="todo.id">
-		<input type="checkbox" [checked]="todo.completed" (change)="toggle()" [id]="todo.id" />
-		<span [ngClass]="{ completed: todo.completed }" aria-label="A Todo Item">{{ todo.title }}</span>
-		<button (click)="remove()">x</button>
-	</label>
-</li>
