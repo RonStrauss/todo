@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Todo } from 'src/app/interfaces/todo';
 import { TodosService } from 'src/app/services/todos.service';
 
@@ -10,6 +10,7 @@ import { TodosService } from 'src/app/services/todos.service';
 	standalone: true,
 	imports: [NgClass],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class TodoItemComponent implements OnInit {
 	_todo = inject(TodosService);

@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { InputComponent } from '../input/input.component';
-import { TodoListComponent } from "../todo-list/todo-list.component";
+import { TodoListComponent } from '../todo-list/todo-list.component';
 
 @Component({
 	selector: 'app-home',
@@ -9,6 +9,7 @@ import { TodoListComponent } from "../todo-list/todo-list.component";
 	standalone: true,
 	imports: [InputComponent, TodoListComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HomeComponent implements OnInit {
 	constructor() {}

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TodosService } from 'src/app/services/todos.service';
 import { nanoid } from 'nanoid';
@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid';
 	standalone: true,
 	imports: [ReactiveFormsModule, FormsModule],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class InputComponent implements OnInit {
 	private readonly _todo = inject(TodosService);
