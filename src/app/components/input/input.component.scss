@@ -29,7 +29,8 @@ input[type='text'] {
 	input[type='text'] {
 		border-color: rgb(62, 68, 70);
 		box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px inset;
-		background: black;
+		background: var(--secondary-color);
+		color: var(--text-main-color);
 		&:focus-within {
 			border-color: var(--main-color);
 			box-shadow: 0 0 5px rgba(103, 10, 124, 0.5);

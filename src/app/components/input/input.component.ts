@@ -32,5 +32,7 @@ export class InputComponent {
 		});
 
 		this.newTodo.reset();
+		this.newTodo.markAsUntouched();
+		this.newTodo.markAsPristine();
 	}
 }
