@@ -54,4 +54,9 @@ describe('TodoItemComponent', () => {
 		component.remove();
 		expect(todosService.removeTodoById).toHaveBeenCalledWith(dummyTodo.id);
 	});
+
+	it('should have role attribute set to listitem', () => {
+		const hostElement: HTMLElement = fixture.nativeElement;
+		expect(hostElement.getAttribute('role')).toBe('listitem');
+	});
 });
