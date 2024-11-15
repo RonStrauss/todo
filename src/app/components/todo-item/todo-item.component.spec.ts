@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoItemComponent } from './todo-item.component';
 import { Todo } from 'src/app/interfaces/todo';
 import { TodosService } from 'src/app/services/todos.service';
+import * as axe from 'axe-core';
 
 export const dummyTodo: Todo = {
 	id: '1',
