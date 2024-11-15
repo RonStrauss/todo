@@ -11,6 +11,7 @@ describe('InputComponent', () => {
 	beforeEach(async () => {
 		const todosServiceMock = {
 			addTodo: jasmine.createSpy('addTodo'),
+			getTodos: jasmine.createSpy('getTodos').and.returnValue([]),
 		};
 
 		await TestBed.configureTestingModule({

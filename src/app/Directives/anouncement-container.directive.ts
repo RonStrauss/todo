@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, inject, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { AnouncerService } from '../services/anouncer.service';
 
 @Directive({
@@ -6,10 +6,7 @@ import { AnouncerService } from '../services/anouncer.service';
 	standalone: true,
 })
 export class AnouncementContainerDirective implements AfterViewInit {
-	private renderer = inject(Renderer2);
-	private _anouncer = inject(AnouncerService);
-
-	constructor(private element: ElementRef) {}
+	constructor(private element: ElementRef, private renderer: Renderer2, private _anouncer: AnouncerService) {}
 
 	ngAfterViewInit(): void {
 		console.log('ngoninit');
