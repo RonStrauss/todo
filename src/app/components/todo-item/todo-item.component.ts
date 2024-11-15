@@ -9,13 +9,12 @@ import { TodosService } from 'src/app/services/todos.service';
 	styleUrls: ['./todo-item.component.scss'],
 	standalone: true,
 	imports: [NgClass],
-	host: {
-		role: 'listitem',
-	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class TodoItemComponent implements OnInit {
+	@HostBinding('role') role = 'listitem';
+
 	_todo = inject(TodosService);
 	constructor() {}
 

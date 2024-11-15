@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { TodosService } from 'src/app/services/todos.service';
@@ -12,11 +12,11 @@ import { TodosService } from 'src/app/services/todos.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
 	_todo = inject(TodosService);
 	constructor() {}
 
-	todos$ = this._todo.todos$;
+	@HostBinding('role') role = 'list';
 
-	ngOnInit(): void {}
+	todos$ = this._todo.todos$;
 }

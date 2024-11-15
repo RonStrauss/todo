@@ -12,11 +12,9 @@ import { nanoid } from 'nanoid';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class InputComponent implements OnInit {
+export class InputComponent {
 	private readonly _todo = inject(TodosService);
 	constructor() {}
-
-	ngOnInit(): void {}
 
 	newTodo = new FormControl('', { nonNullable: true, validators: [Validators.required] });
 

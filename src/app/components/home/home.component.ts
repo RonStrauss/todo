@@ -11,8 +11,6 @@ import { TodoListComponent } from '../todo-list/todo-list.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 	constructor() {}
-
-	ngOnInit(): void {}
 }
