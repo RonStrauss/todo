@@ -6,7 +6,9 @@
 	--main-color-active: color-mix(in hsl, var(--main-color), black 20%);
 	--secondary-color: #f8f9fa;
 	--text-main-color: #212529;
-	--alert-color: color-mix(in hsl, var(--main-color), red 70%);
+	--alert-color: #0000b1;
+	--error-color: #9f0101;
+	--error-text-color: #f8f9fa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +18,8 @@
 		--main-color-active: color-mix(in hsl, var(--main-color), white 20%);
 		--secondary-color: #2c2f31;
 		--text-main-color: #f8f9fa;
+		--error-color: #fdaf6a;
+		--alert-color: #753434;
 	}
 }
 

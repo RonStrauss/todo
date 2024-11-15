@@ -1,6 +1,21 @@
 {
 	"name": "todo",
-	"version": "0.0.0",
+	"version": "1.0.0",
+	"description": "An accessible angular todo list",
+	"license": "MIT",
+	"author": {
+		"name": "Ron Strauss",
+		"email": "ron.Strauss.work@gmail.com",
+		"url": "https://ronstrauss.cc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ronstrauss/ng-todo.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ronstrauss/ng-todo/issues"
+	},
+	"homepage": "https://ronstrauss.github.io/ng-todo/",
 	"config": {
 		"serve-url": "http://localhost:4200"
 	},
@@ -13,7 +28,7 @@
 		"watch": "ng build --watch --configuration development",
 		"test:watch": "ng test",
 		"test": "ng test --watch=false",
-		"lint": "eslint -c .eslintrc.json ./src/",
+		"lint": "ng lint --fix",
 		"open-in-chrome": "ver && (wait-on %npm_package_config_serve-url% && start chrome %npm_package_config_serve-url%) || (wait-on $npm_package_config_serve-url && open chrome $npm_package_config_serve-url)",
 		"open-pr": "node scripts/open-pr.js"
 	},

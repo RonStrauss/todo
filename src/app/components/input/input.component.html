@@ -1,3 +1,10 @@
 <form (ngSubmit)="submit()">
+	<div class="error-messages">
+		<ng-container *ngIf="newTodo.invalid && newTodo.touched">
+			<span *ngIf="newTodo.errors?.['required']">{{ requiredText }}</span>
+			<span *ngIf="newTodo.errors?.['minlength']">{{ minLengthText }}</span>
+			<span *ngIf="newTodo.errors?.['todoAlreadyExists']">{{ alreadyExistsText }}</span>
+		</ng-container>
+	</div>
 	<input type="text" autocomplete="off" [attr.aria-invalid]="newTodo.invalid && newTodo.dirty ? 'true' : 'false'" [formControl]="newTodo" placeholder="Add a task" aria-label="New Task" required />
 </form>

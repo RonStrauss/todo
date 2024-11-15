@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { Todo } from '../interfaces/todo';
 import { TodoNotFoundError } from '../libs/Errors';
 import { mockTodos } from '../DB/Todos';
+import { AnouncerService } from './anouncer.service';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class TodosService {
+	private _anouncer = inject(AnouncerService);
 	constructor() {
 		this.init();
 	}
@@ -30,22 +32,26 @@ export class TodosService {
 	addTodo(todo: Todo): void {
 		const todos = this.getTodos();
 		this.setTodos([...todos, todo]);
+		this._anouncer.anounceNewMessage(`New task item added: ${todo.title}`);
 	}
 
 	removeTodoById(id: string): void {
 		const todos = this.getTodos();
+		const intendedTodo = todos.find(todo => todo.id === id);
 		this.setTodos(todos.filter(todo => todo.id !== id));
+		this._anouncer.anounceNewMessage(`Task item removed: ${intendedTodo?.title}`);
 	}
 
 	clearAllTodos(): void {
 		this.setTodos([]);
+		this._anouncer.anounceNewMessage('All task items cleared');
 	}
 
 	toggleTodoById(id: string): void {
 		const todos = this.getTodos();
 		const intendedTodo = todos.find(todo => todo.id === id);
 		if (!intendedTodo) {
-			throw new TodoNotFoundError(`Todo with id ${id} not found`);
+			throw new TodoNotFoundError(`Task with id ${id} not found`);
 		}
 		for (const todo of todos) {
 			if (todo.id === id) {
@@ -54,5 +60,6 @@ export class TodosService {
 		}
 
 		this.setTodos(todos);
+		this._anouncer.anounceNewMessage(`Task item ${intendedTodo.title} marked as ${intendedTodo.completed ? 'completed' : 'incomplete'}`);
 	}
 }
