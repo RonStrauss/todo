@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Todo } from 'src/app/interfaces/todo';
+import { InputRequiredError } from 'src/app/libs/Errors';
 import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
@@ -9,25 +10,21 @@ import { TodosService } from 'src/app/services/todos.service';
 	styleUrls: ['./todo-item.component.scss'],
 	standalone: true,
 	imports: [NgClass],
-	host: {
-		role: 'listitem',
-	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class TodoItemComponent implements OnInit {
+	@HostBinding('role') role = 'listitem';
+
 	_todo = inject(TodosService);
 	constructor() {}
 
 	@Input() todo!: Todo;
 
 	ngOnInit(): void {
-		this.todo ??= {
-			id: '',
-			title: '',
-			completed: false,
-			timestamp: 0,
-		};
+		if (!this.todo) {
+			throw new InputRequiredError('todo input is required');
+		}
 	}
 
 	toggle() {

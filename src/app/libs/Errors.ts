@@ -4,3 +4,10 @@ export class TodoNotFoundError extends Error {
 		this.name = 'TodoNotFoundError';
 	}
 }
+
+export class InputRequiredError extends Error {
+	constructor(message: string) {
+		super(message);
+		this.name = 'InputRequiredError';
+	}
+}
