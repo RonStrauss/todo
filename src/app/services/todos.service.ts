@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Todo } from '../interfaces/todo';
 import { TodoNotFoundError } from '../libs/Errors';
 import { mockTodos } from '../DB/Todos';
@@ -12,18 +12,19 @@ export class TodosService {
 		this.init();
 	}
 
-	todos$ = new BehaviorSubject<Todo[]>([]);
+	readonly #todos$ = new BehaviorSubject<Todo[]>([]);
+	readonly todos$ = this.#todos$.pipe(map(todos => todos.sort((a, b) => a.timestamp - b.timestamp)));
 
 	init(): void {
 		this.setTodos(mockTodos);
 	}
 
 	getTodos(): Todo[] {
-		return this.todos$.getValue();
+		return this.#todos$.getValue();
 	}
 
 	setTodos(todos: Todo[]): void {
-		this.todos$.next(todos);
+		this.#todos$.next(todos);
 	}
 
 	addTodo(todo: Todo): void {
