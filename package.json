@@ -11,7 +11,8 @@
 		"dev:chrome": "run-p start open-in-chrome",
 		"build": "ng build",
 		"watch": "ng build --watch --configuration development",
-		"test": "ng test",
+		"test:watch": "ng test",
+		"test": "ng test --watch=false",
 		"lint": "eslint -c .eslintrc.json ./src/",
 		"open-in-chrome": "ver && (wait-on %npm_package_config_serve-url% && start chrome %npm_package_config_serve-url%) || (wait-on $npm_package_config_serve-url && open chrome $npm_package_config_serve-url)"
 	},
