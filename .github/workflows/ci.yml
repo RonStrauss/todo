@@ -24,5 +24,7 @@ jobs:
          - name: Run lint
            run: npm run lint
 
-         - name: Run tests
-           run: npm test
+         - name: Run headless test
+           uses: coactions/setup-xvfb@v1
+           with:
+            run: npm test
