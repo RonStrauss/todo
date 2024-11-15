@@ -1,6 +1,7 @@
 form {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	margin-top: 20px;
 }
 
@@ -34,6 +35,24 @@ input[type='text'] {
 		&:focus-within {
 			border-color: var(--main-color);
 			box-shadow: 0 0 5px rgba(103, 10, 124, 0.5);
+		}
+	}
+}
+
+.error-messages {
+	color: var(--error-color);
+	font-size: 14px;
+	position: relative;
+	height: 1rem;
+
+	& span {
+		position: absolute;
+		top: -1rem;
+		width:50vw;
+		&::before {
+			content: '⚠️';
+			position: absolute;
+			left: -20px;
 		}
 	}
 }
