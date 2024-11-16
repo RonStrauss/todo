@@ -21,6 +21,8 @@
 
 - [Table of Contents](#table-of-contents)
 - [Core Features](#core-features)
+- [Reasoning](#reasoning)
+- [Structural Choices I Regret](#structural-choices-i-regret)
 - [Technologies Used](#technologies-used)
 - [Deployment](#deployment)
 - [Installation](#installation)
@@ -37,10 +39,27 @@
 -  Mark items as completed.
 -  Delete items from the list.
 
+
+## Reasoning
+
+I was tasked with building an accessible Todo app using Angular, within 24 hours.
+Material seemed like the obvious choice, since the material design adheres to WCAG. However, this seemed too
+easy, and therefore I've decided to try and create the app all by myself, from scratch.
+I'm unfamiliar with accessibility standards, although i was aware of ARIA tags and screen readers. I've tried my best, and I'm pleased with the results.
+
+
+## Structural Choices I Regret
+
+There were a few intentional decisions made:
+- Todo apps usually hide the deletion button, and reveal it only on hover. I've decided against that, since the user should always know they can delete the task item. This proved to be a bit overwhelming in terms of UX, a column of a darker red next to every task item isn't as pleasant to look at.
+- Components should render as shadow dom. Shadow dom is a more native web technology than angular's unique view encapsulation. This choice ended up making the e2e testing less easy and intuitive to write. 
+
+
 ## Technologies Used
 
 -  **Framework**: Angular 14 (This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.)
--  **Testing Tools**: axe-core, NVDA, Chrome Lighthouse, Manual Testing
+-  **Testing Tools**: axe-core with cypress, karma, NVDA, Chrome Lighthouse, Manual Testing
+    (All testing done on Windows, Chrome)
 
 ## Deployment
 
@@ -48,14 +67,18 @@ The application is deployed on GitHub Pages and can be accessed [here](https://r
 
 ## Installation
 
-<!-- TODO note how to install locally -->
+To install and run this app locally, simply clone the repo, install dependencies, and run it.
+**Tools Needed**: git, Node.js 16+ 
+1. Clone the report locally, then run `git clone "https://github.com/RonStrauss/ng-todo"`.
+2. `cd` into the directory, and run `npm i`.
+3. After that, run `npm run dev` to start and open the development server.  
 
 ## CPAT Compliance
 
 ### Keyboard Accessibility
 
--  All functionality is accessible via keyboard navigation (e.g., tabbing, enter, space), thanks to the native functionaility provided by the operating system and browser.
--  Clear and visible focus indicators are included on interactive elements, again, thanks to native functionaility provided by the operating system and browser.
+-  All functionality is accessible via keyboard navigation (e.g., tabbing, enter, space), thanks to the native functionality provided by the operating system and browser.
+-  Clear and visible focus indicators are included on interactive elements, again, thanks to native functionality provided by the operating system and browser.
 
 ### Accessibility and Screen Reader Compatibility
 
