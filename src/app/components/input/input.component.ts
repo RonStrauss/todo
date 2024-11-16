@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { Todo } from 'src/app/interfaces/todo';
 import { NgIf } from '@angular/common';
 import { Subject } from 'rxjs';
-import { AnouncerService } from 'src/app/services/anouncer.service';
+import { AnnouncerService } from 'src/app/services/anouncer.service';
 
 @Component({
 	selector: 'app-input',
@@ -18,7 +18,7 @@ import { AnouncerService } from 'src/app/services/anouncer.service';
 })
 export class InputComponent implements OnInit {
 	private readonly _todo = inject(TodosService);
-	private readonly _anouncer = inject(AnouncerService);
+	private readonly _anouncer = inject(AnnouncerService);
 	constructor() {}
 
 	newTodo = new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(3), this.validateIsTodoAlreadyInList()] });
@@ -53,7 +53,7 @@ export class InputComponent implements OnInit {
 					message = this.alreadyExistsText;
 					break;
 			}
-			this._anouncer.anounceNewMessage(message);
+			this._anouncer.announceNewMessage(message);
 			this.newTodo.markAsTouched();
 			this.newTodo.markAsDirty();
 			return;

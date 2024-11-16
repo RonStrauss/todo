@@ -4,40 +4,40 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
 	providedIn: 'root',
 })
-export class AnouncerService {
-	private anouncementContainer?: ElementRef<HTMLDivElement>;
+export class AnnouncerService {
+	private announcementContainer?: ElementRef<HTMLDivElement>;
 
-	private anouncementQueue$ = new BehaviorSubject<string[]>([]);
+	private announcementQueue$ = new BehaviorSubject<string[]>([]);
 
 	constructor() {}
 
-	setAnouncementContainer(container: ElementRef<HTMLDivElement>): void {
-		this.anouncementContainer = container;
-		this.beginAnouncementQueue();
+	setAnnouncementContainer(container: ElementRef<HTMLDivElement>): void {
+		this.announcementContainer = container;
+		this.beginAnnouncementQueue();
 	}
 
-	anounceNewMessage(message: string): void {
-		this.anouncementQueue$.next([...this.anouncementQueue$.getValue(), message]);
+	announceNewMessage(message: string): void {
+		this.announcementQueue$.next([...this.announcementQueue$.getValue(), message]);
 	}
 
-	private beginAnouncementQueue(): void {
-		if (!this.anouncementContainer) {
-			throw new Error('Anouncement container not set');
+	private beginAnnouncementQueue(): void {
+		if (!this.announcementContainer) {
+			throw new Error('announcement container not set');
 		}
 
-		const anouncementContainer = this.anouncementContainer.nativeElement;
+		const announcementContainer = this.announcementContainer.nativeElement;
 
-		this.anouncementQueue$.subscribe(messages => {
+		this.announcementQueue$.subscribe(messages => {
 			if (!messages.length) {
-				anouncementContainer.textContent = null;
+				announcementContainer.textContent = null;
 				return;
 			}
 
-			anouncementContainer.textContent = messages[0];
+			announcementContainer.textContent = messages[0];
 
 			setTimeout(() => {
-				anouncementContainer.textContent = null;
-				this.anouncementQueue$.next(messages.slice(1));
+				announcementContainer.textContent = null;
+				this.announcementQueue$.next(messages.slice(1));
 			}, 3000);
 		});
 	}

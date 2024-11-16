@@ -1,10 +1,10 @@
 import { AnouncementContainerDirective } from './anouncement-container.directive';
 import { Renderer2 } from '@angular/core';
-import { AnouncerService } from '../services/anouncer.service';
+import { AnnouncerService } from '../services/anouncer.service';
 import { ElementRef } from '@angular/core';
 
 describe('AnouncementContainerDirective', () => {
-	let anouncerServiceMock: jasmine.SpyObj<AnouncerService>;
+	let anouncerServiceMock: jasmine.SpyObj<AnnouncerService>;
 	let elementRefMock: jasmine.SpyObj<ElementRef>;
 	let rendererMock: jasmine.SpyObj<Renderer2>;
 	let directive: AnouncementContainerDirective;

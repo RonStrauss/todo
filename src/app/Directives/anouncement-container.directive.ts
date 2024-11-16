@@ -1,12 +1,12 @@
 import { AfterViewInit, Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { AnouncerService } from '../services/anouncer.service';
+import { AnnouncerService } from '../services/anouncer.service';
 
 @Directive({
 	selector: '[appAnouncementContainer]',
 	standalone: true,
 })
 export class AnouncementContainerDirective implements AfterViewInit {
-	constructor(private element: ElementRef, private renderer: Renderer2, private _anouncer: AnouncerService) {}
+	constructor(private element: ElementRef, private renderer: Renderer2, private _anouncer: AnnouncerService) {}
 
 	ngAfterViewInit(): void {
 		this.renderer.setAttribute(this.element.nativeElement, 'aria-live', 'polite');
@@ -14,6 +14,6 @@ export class AnouncementContainerDirective implements AfterViewInit {
 		this.renderer.setStyle(this.element.nativeElement, 'width', '1px');
 		this.renderer.setStyle(this.element.nativeElement, 'height', '1px');
 		this.renderer.setStyle(this.element.nativeElement, 'overflow', 'hidden');
-		this._anouncer.setAnouncementContainer(this.element);
+		this._anouncer.setAnnouncementContainer(this.element);
 	}
 }

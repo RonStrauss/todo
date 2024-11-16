@@ -3,13 +3,13 @@ import { BehaviorSubject, map } from 'rxjs';
 import { Todo } from '../interfaces/todo';
 import { TodoNotFoundError } from '../libs/Errors';
 import { mockTodos } from '../DB/Todos';
-import { AnouncerService } from './anouncer.service';
+import { AnnouncerService } from './anouncer.service';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class TodosService {
-	private _anouncer = inject(AnouncerService);
+	private _anouncer = inject(AnnouncerService);
 	constructor() {
 		this.init();
 	}
@@ -32,19 +32,19 @@ export class TodosService {
 	addTodo(todo: Todo): void {
 		const todos = this.getTodos();
 		this.setTodos([...todos, todo]);
-		this._anouncer.anounceNewMessage(`New task item added: ${todo.title}`);
+		this._anouncer.announceNewMessage(`New task item added: ${todo.title}`);
 	}
 
 	removeTodoById(id: string): void {
 		const todos = this.getTodos();
 		const intendedTodo = todos.find(todo => todo.id === id);
 		this.setTodos(todos.filter(todo => todo.id !== id));
-		this._anouncer.anounceNewMessage(`Task item removed: ${intendedTodo?.title}`);
+		this._anouncer.announceNewMessage(`Task item removed: ${intendedTodo?.title}`);
 	}
 
 	clearAllTodos(): void {
 		this.setTodos([]);
-		this._anouncer.anounceNewMessage('All task items cleared');
+		this._anouncer.announceNewMessage('All task items cleared');
 	}
 
 	toggleTodoById(id: string): void {
@@ -60,6 +60,6 @@ export class TodosService {
 		}
 
 		this.setTodos(todos);
-		this._anouncer.anounceNewMessage(`Task item ${intendedTodo.title} marked as ${intendedTodo.completed ? 'completed' : 'incomplete'}`);
+		this._anouncer.announceNewMessage(`Task item ${intendedTodo.title} marked as ${intendedTodo.completed ? 'completed' : 'incomplete'}`);
 	}
 }
