@@ -27,7 +27,8 @@ describe('HomeComponent', () => {
 		const compiled = fixture.nativeElement.shadowRoot as HTMLElement;
 		const firstVisibleElement = Array.from(compiled.children).find(el => el.nodeType === Node.ELEMENT_NODE && (el as HTMLElement).offsetParent !== null);
 		expect(firstVisibleElement).toBeTruthy();
-		expect(firstVisibleElement?.tagName).toBe('H1');
+		expect(firstVisibleElement?.tagName).toBe('HEADER');
+		expect(firstVisibleElement?.children?.[0]?.tagName).toBe('H1');
 	});
 
 	it('should contain an app-input component', () => {
