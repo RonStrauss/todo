@@ -25,8 +25,8 @@
 - [Deployment](#deployment)
 - [Installation](#installation)
 - [CPAT Compliance](#cpat-compliance)
-	- [Keyboard Accessibility](#keyboard-accessibility)
-	- [Accessibility and Screen Reader Compatibility](#accessibility-and-screen-reader-compatibility)
+  - [Keyboard Accessibility](#keyboard-accessibility)
+  - [Accessibility and Screen Reader Compatibility](#accessibility-and-screen-reader-compatibility)
 - [Testing Process](#testing-process)
 - [Documentation](#documentation)
 - [GitHub Repository](#github-repository)
@@ -93,5 +93,5 @@ The source code for this project is available on GitHub: [ng-todo](https://ronst
 [license-url]: https://github.com/RonStrauss/ng-todo/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/ronstrauss-webdev/
-[gh-pages-shield]: https://img.shields.io/github/actions/workflow/status/RonStrauss/ng-todo/deploy-gh-pages.yml?style=for-the-badge&logo=githubpages&size=auto&label=
+[gh-pages-shield]: https://img.shields.io/badge/-text?style=flat&logo=githubpages&logoSize=auto
 [gh-pages-url]: https://ronstrauss.github.io/ng-todo/
